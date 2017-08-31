@@ -4,27 +4,18 @@ function minmax(data) {
     return getMinMax(validateData(data));
 }
 
-function validateData(data){
-
-    const validData = [];
-    data = data.replace(/,/g,'').split(" ");
-
-    data.forEach(function (item, i, data) {
-        if(!Number.isNaN(+item) && item !== ""){
-            validData.push(+item)
-        }
-    });
-    return validData;
+function validateData(data) {
+    return data.replace(/,/g, '').split(" ").filter(item => (item != "" && (!!Number(item) || +item === 0) && (!isFinite(item) || /\d/.test(item))));
 }
 
-function zeroResult(){
-    return [undefined,undefined]
+function zeroResult() {
+    return [undefined, undefined]
 }
 
 function getMinMax(data) {
 
-    if(data.length === 0){
+    if (data.length === 0) {
         return zeroResult()
     }
-    return [Math.min(...data),Math.max(...data)];
+    return [Math.min(...data), Math.max(...data)];
 }
