@@ -6,7 +6,7 @@ function minmax(data) {
 
 function validateData(data){
 
-    let validData = [];
+    const validData = [];
     data = data.replace(/,/g,'').split(" ");
 
     data.forEach(function (item, i, data) {
@@ -14,7 +14,6 @@ function validateData(data){
             validData.push(+item)
         }
     });
-
     return validData;
 }
 
@@ -24,14 +23,8 @@ function zeroResult(){
 
 function getMinMax(data) {
 
-    let result = [];
-    let min,max;
-
-    if(data.length === 0)return zeroResult();
-
-    min = Math.min(...data);
-    max = Math.max(...data);
-    result.push(min,max);
-
-    return result;
+    if(data.length === 0){
+        return zeroResult()
+    }
+    return [Math.min(...data),Math.max(...data)];
 }
