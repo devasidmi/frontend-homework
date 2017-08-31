@@ -1,7 +1,7 @@
 'use strict';
 
 function minmax(data) {
-    return data.length === 0 ? zeroResult() : getMinMax(validateData(data));
+    return getMinMax(validateData(data));
 }
 
 function validateData(data){
@@ -10,7 +10,7 @@ function validateData(data){
     data = data.replace(/,/g,'').split(" ");
 
     data.forEach(function (item, i, data) {
-        if(!Number.isNaN(+item)){
+        if(!Number.isNaN(+item) && item !== ""){
             validData.push(+item)
         }
     });
